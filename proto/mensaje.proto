@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package grpc;
+
+option go_package = "github.com/Sistemas-Distribuidos-2023-02/Grupo31-Laboratorio-2/proto";
+
+message Nombre_Estado {
+    string name = 1;
+    string last = 2;
+    string estate = 3;
+}
+
+message Nombre_ID{
+    string name = 1;
+    string last = 2;
+    int32 id = 3;
+}
+
+message Nombre {
+    string name = 1;
+    string last = 2;
+}
+
+message ID {
+    int32 id =1;
+}
+
+message Estado {
+    int32 estate = 1;
+}
+
+message Empty{
+
+}
+
+message Personas{
+    repeated Nombre_Estado status = 1;
+}
+
+message Mensaje{
+    string mensaje = 1;
+}
+
+service Funciones {
+
+    rpc AgregarRegistroOMS (Nombre_Estado) returns (Empty);
+    rpc RegistrarNombresDatanode1 (Nombre_ID) returns (Empty);
+    rpc RegistrarNombresDatanode2 (Nombre_ID) returns (Empty);
+    rpc ObtenerNombres (ID) returns (Nombre);
+    rpc ObtenerCifras (Estado) returns (Personas);
+    rpc ObtenerCifras2 (Mensaje) returns (Mensaje);
+    rpc ObtenerCifras3 (Mensaje) returns (Empty);
+}
